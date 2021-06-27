@@ -16,7 +16,10 @@ $("#no-background-input").prop("checked", false);
 generateLinks();
 
 function generateLinks() {
-    var finalHTML = `<div id='shareLinks' style='display:flex;flex-direction:row;font-size: ${$("#scale-input").val()*16}px;'>`;
+    var finalHTML = `
+    <div id='shareLinks' style='display:flex;flex-direction:row;font-size: ${$("#scale-input").val()*16}px;'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    `;
     $(".socialmedia-checkbox").each(function() {
         if ($(this).is(":checked")) {
             finalHTML += generateLink($(this).attr('id'));
@@ -24,7 +27,7 @@ function generateLinks() {
     });
     finalHTML += `
     <style>
-        a {
+        .fa {
             text-decoration: none;
             color: ${$("#icon-color-input").val()};
             ${$("#no-background-input").is(":checked") ? "" : "background: " + $("#background-color-input").val() + ";"}
@@ -37,7 +40,7 @@ function generateLinks() {
             height: ${$("#scale-input").val()*20}px;
             text-align: center;
         }
-        ${$("#hover-input").is(":checked") ? "a:hover{opacity: 0.5;}" : ""}
+        ${$("#hover-input").is(":checked") ? ".fa:hover{opacity: 0.5;}" : ""}
     </style>
     </div>
     `
